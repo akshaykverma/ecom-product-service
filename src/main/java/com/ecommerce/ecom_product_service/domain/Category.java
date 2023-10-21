@@ -38,8 +38,10 @@ public class Category {
     @Column(name = "category_id", length = 36, columnDefinition = "varchar", updatable = false, nullable = false )
 	private UUID id;
 	
+	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@Column(name = "description")
 	private String description;
 	
 	@OneToMany(mappedBy = "category")

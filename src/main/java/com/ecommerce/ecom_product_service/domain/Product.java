@@ -45,16 +45,20 @@ public class Product extends Auditable {
 	 * Used for optimistic locking with a database record
 	 */
 	@Version
+	@Column(name = "version", nullable = false )
     private Long version;
 	
+	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@Column(name = "description")
 	private String description;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
+	@Column(name = "price", nullable = false)
 	private Double price;
 	
 	@OneToMany(mappedBy = "product")

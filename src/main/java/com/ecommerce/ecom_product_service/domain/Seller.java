@@ -37,9 +37,8 @@ public class Seller {
     @Column(name = "seller_id", length = 36, columnDefinition = "varchar", updatable = false, nullable = false )
 	private UUID id;
 	
+	@Column(name = "name", nullable = false)
 	private String name;
-	
-	private String description;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")

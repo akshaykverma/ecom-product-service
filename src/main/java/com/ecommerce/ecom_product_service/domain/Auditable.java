@@ -1,17 +1,11 @@
 package com.ecommerce.ecom_product_service.domain;
 
 import java.sql.Timestamp;
-import java.util.UUID;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -28,9 +22,10 @@ import lombok.Setter;
 public class Auditable {
 	
 	@CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "created_date", updatable = false)
     private Timestamp createdDate;
 
     @UpdateTimestamp
+    @Column(name = "last_modified_date")
     private Timestamp lastModifiedDate;
 }
