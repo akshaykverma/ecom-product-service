@@ -8,7 +8,7 @@ import com.ecommerce.ecom_product_service.model.ProductDTO;
 
 public interface ProductService {
 	
-	Optional<ProductDTO> getProductById(UUID productId);
+	ProductDTO getProductById(UUID productId);
 	
 	Optional<ProductDTO> getProductByCategory(UUID categoryId);
 	

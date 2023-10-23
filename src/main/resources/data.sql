@@ -55,9 +55,6 @@ VALUES
 
 -- Sample data for the Product-Seller relationship
 -- Map all products to sellers
-INSERT INTO product_seller (product_id, seller_id)
-SELECT
-  product_id,
-  seller_id
-FROM Product
-CROSS JOIN Seller;
+-- INSERT INTO product_seller (product_id, seller_id);
+
+-- SELECT product_id, seller_id FROM Product CROSS JOIN Seller;

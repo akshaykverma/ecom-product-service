@@ -1,8 +1,8 @@
-.project
-.classpath
+*/.project
+*/.classpath
 .factorypath
 .idea/
-.settings/
+.settings/*
 target/
 gwt-unitCache/
 logs/

@@ -6,6 +6,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.ecom_product_service.domain.Product;
+import com.ecommerce.ecom_product_service.exception.ProductNotFoundException;
+import com.ecommerce.ecom_product_service.mapper.ProductMapper;
 import com.ecommerce.ecom_product_service.model.ProductDTO;
 import com.ecommerce.ecom_product_service.repository.ProductRepostory;
 import com.ecommerce.ecom_product_service.services.ProductService;
@@ -17,11 +20,16 @@ import lombok.RequiredArgsConstructor;
 public class ProductServiceImpl implements ProductService {
 
 	private final ProductRepostory productRepo;
-	
+	private final ProductMapper productMapper;
+
 	@Override
-	public Optional<ProductDTO> getProductById(UUID productId) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public ProductDTO getProductById(UUID productId) {
+		Optional<Product> productOptional = productRepo.findById(productId);
+		
+		if (productOptional.isPresent()) {
+			return productMapper.convertToProductDto(productOptional.get());
+		}
+		throw new ProductNotFoundException("product with product id" + productId.toString() + " not found");
 	}
 
 	@Override

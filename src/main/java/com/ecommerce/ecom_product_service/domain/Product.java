@@ -1,7 +1,7 @@
 package com.ecommerce.ecom_product_service.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -68,6 +68,6 @@ public class Product extends Auditable {
         joinColumns = @JoinColumn(name = "product_id"),
         inverseJoinColumns = @JoinColumn(name = "seller_id")
     )
-	private List<Seller> sellers = new ArrayList<>(); 
+	private Set<Seller> sellers = new HashSet<>(); 
 	
 }
