@@ -17,13 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/product/")
 @RestController()
 public class ProductController {
 
 	private final ProductService productService;
 	
-	@GetMapping(path = {"product/{productId}"}, produces = { "application/json" })
+	@GetMapping(path = {"{productId}"}, produces = { "application/json" })
     public ResponseEntity<ProductDTO>  getProductById(@PathVariable("productId") UUID productId) {
 		log.debug("Get Request for ProductId: " + productId);
 		
