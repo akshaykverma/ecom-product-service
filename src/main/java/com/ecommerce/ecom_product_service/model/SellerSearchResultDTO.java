@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({"currentPageNumber", "totalPages", "totalResults", "categories"})
-public class CategorySearchResultDTO {
+@JsonPropertyOrder({"currentPageNumber", "totalPages", "totalResults", "sellers"})
+public class SellerSearchResultDTO {
 
-	private List<CategoryDTO> categories;
+	private List<SellerDTO> sellers;
 	private Integer currentPageNumber;
 	private Integer totalPages;
 	private Long totalResults;
