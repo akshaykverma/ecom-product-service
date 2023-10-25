@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.ecommerce.ecom_product_service.model.ProductDTO;
+import com.ecommerce.ecom_product_service.model.ProductSearchResultDTO;
 
 public interface ProductService {
 	
@@ -14,9 +15,9 @@ public interface ProductService {
 	
 	Optional<List<ProductDTO>> getProductsBySeller(UUID sellerId);
 	
-	Optional<List<ProductDTO>> getAllProducts();
+	ProductSearchResultDTO listProducts(Integer pageNumber, Integer size);
 	
-	void addProduct(ProductDTO productDto);
+	void saveProduct(ProductDTO productDto);
 	
 	void updateProduct(UUID currentProductId, ProductDTO updatedProductData);
 	

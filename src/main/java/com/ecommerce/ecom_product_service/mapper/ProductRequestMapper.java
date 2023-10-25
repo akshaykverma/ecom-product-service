@@ -9,7 +9,7 @@ import com.ecommerce.ecom_product_service.model.ProductDTO;
 import com.ecommerce.ecom_product_service.util.CommonUtility;
 
 @Mapper(componentModel = "spring", imports = {CommonUtility.class})
-public interface ProductMapper {
+public interface ProductRequestMapper {
 	
 	@Mappings({
 		@Mapping(source = "id", target = "id"),
@@ -22,5 +22,4 @@ public interface ProductMapper {
 		@Mapping(expression = "java(CommonUtility.asOffsetDateTime(product.getLastModifiedDate()))", target = "lastModifiedDate")
 	})
 	ProductDTO convertToProductDto(Product product);
-
 }

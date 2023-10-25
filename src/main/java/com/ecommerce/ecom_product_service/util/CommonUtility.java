@@ -16,12 +16,20 @@ public class CommonUtility {
         }
     }
 	
-	public static Timestamp asTimestamp(OffsetDateTime offsetDateTime){
-        if(offsetDateTime != null) {
-            return Timestamp.valueOf(offsetDateTime.atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
-        } else {
-            return null;
-        }
-    }
+//	public static Timestamp asTimestamp(OffsetDateTime offsetDateTime){
+//        if(offsetDateTime != null) {
+//            return Timestamp.valueOf(offsetDateTime.atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
+//        } else {
+//            return null;
+//        }
+//    }
+//	
+	public static Timestamp asTimestamp(OffsetDateTime offsetDateTime) {
+	    if (offsetDateTime != null) {
+	        return Timestamp.from(offsetDateTime.toInstant());
+	    } else {
+	        return null;
+	    }
+	}
 
 }

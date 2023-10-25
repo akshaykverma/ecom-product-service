@@ -55,6 +55,10 @@ public class Product extends Auditable {
 	@Column(name = "description")
 	private String description;
 	
+	// Identifies each product uniquely. Can be used for inventory system
+	@Column(name = "upc", unique = true)
+	private String upc;
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
