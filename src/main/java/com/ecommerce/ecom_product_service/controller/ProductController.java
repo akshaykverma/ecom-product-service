@@ -1,13 +1,11 @@
 package com.ecommerce.ecom_product_service.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.ecom_product_service.model.ProductDTO;
 import com.ecommerce.ecom_product_service.model.ProductSearchResultDTO;
 import com.ecommerce.ecom_product_service.services.ProductService;
+import com.ecommerce.ecom_product_service.util.CommonUtility;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +35,7 @@ public class ProductController {
 		log.debug("Get Request for ProductId: " + productId);
 		
 		return ResponseEntity.ok()
-				.headers(getHttpHeaders())
+				.headers(CommonUtility.getHttpHeaders())
 				.body(productService.getProductById(productId));
 	}
 	
@@ -46,7 +45,7 @@ public class ProductController {
 		log.debug("list product request with params : page = {} and size = {}", page, size);
 		
 		return ResponseEntity.ok()
-				.headers(getHttpHeaders())
+				.headers(CommonUtility.getHttpHeaders())
 				.body(productService.listProducts(page, size));
 	}
 	
@@ -60,16 +59,4 @@ public class ProductController {
 				noContent().
 				build();
 	}
-	
-	/**
-	 * Getting the required HTTP headers
-	 * 
-	 * @return HttpHeaders contains header information
-	 */
-	private HttpHeaders getHttpHeaders() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("content-type", "application/json");
-		return headers;
-	}
-    
 }

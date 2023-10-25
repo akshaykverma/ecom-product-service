@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.ecommerce.ecom_product_service.domain.Product;
 import com.ecommerce.ecom_product_service.exception.ProductNotFoundException;
-import com.ecommerce.ecom_product_service.mapper.ProductRequestMapper;
+import com.ecommerce.ecom_product_service.mapper.ProductMapper;
 import com.ecommerce.ecom_product_service.model.ProductDTO;
 import com.ecommerce.ecom_product_service.model.ProductSearchResultDTO;
 import com.ecommerce.ecom_product_service.repository.ProductRepostory;
@@ -26,15 +26,14 @@ import lombok.RequiredArgsConstructor;
 public class ProductServiceImpl implements ProductService {
 
 	private final ProductRepostory productRepo;
-	private final ProductRequestMapper productRequestMapper;
-	private final ProductRequestMapper productMapper;
+	private final ProductMapper productMapper;
 
 	@Override
 	public ProductDTO getProductById(UUID productId) {
 		Optional<Product> productOptional = productRepo.findById(productId);
 		
 		if (productOptional.isPresent()) {
-			return productRequestMapper.convertToProductDto(productOptional.get());
+			return productMapper.convertToProductDto(productOptional.get());
 		}
 		throw new ProductNotFoundException("product with product id" + productId.toString() + " not found");
 	}

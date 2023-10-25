@@ -9,7 +9,21 @@ import com.ecommerce.ecom_product_service.model.ProductDTO;
 import com.ecommerce.ecom_product_service.util.CommonUtility;
 
 @Mapper(componentModel = "spring", imports = {CommonUtility.class})
-public interface ProductRequestMapper {
+public interface ProductMapper {
+	
+	@Mappings({
+		@Mapping(source = "id", target = "id"),
+		@Mapping(source = "name", target = "name"),
+		@Mapping(source = "description", target = "description"),
+		@Mapping(source = "price", target = "price"),
+		@Mapping(source = "category.id", target = "category.id"),
+		@Mapping(source = "category.name", target = "category.name"),
+		@Mapping(source = "category.description", target = "category.description"),
+		@Mapping(source = "sellers", target = "sellers"),
+		@Mapping(expression = "java(CommonUtility.asOffsetDateTime(product.getCreatedDate()))", target = "createdDate"),
+		@Mapping(expression = "java(CommonUtility.asOffsetDateTime(product.getLastModifiedDate()))", target = "lastModifiedDate")
+	})
+	ProductDTO convertToProductDto(Product product);
 	
 	@Mappings({
 		@Mapping(source = "id", target = "id"),
@@ -17,9 +31,7 @@ public interface ProductRequestMapper {
 		@Mapping(source = "description", target = "description"),
 		@Mapping(source = "price", target = "price"),
 		@Mapping(source = "category", target = "category"),
-		@Mapping(source = "sellers", target = "sellers"),
-		@Mapping(expression = "java(CommonUtility.asOffsetDateTime(product.getCreatedDate()))", target = "createdDate"),
-		@Mapping(expression = "java(CommonUtility.asOffsetDateTime(product.getLastModifiedDate()))", target = "lastModifiedDate")
+		@Mapping(source = "sellers", target = "sellers")
 	})
-	ProductDTO convertToProductDto(Product product);
+	Product convertToProduct(ProductDTO productDto);
 }
