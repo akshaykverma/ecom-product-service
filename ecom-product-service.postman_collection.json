@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "ed81c998-0a4c-4618-a300-4c8570f3c70b",
+		"name": "ecom-product-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15126926"
+	},
+	"item": [
+		{
+			"name": "list-products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}{{version}}products/page/0/size/5",
+					"host": [
+						"{{url}}{{version}}products"
+					],
+					"path": [
+						"page",
+						"0",
+						"size",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-product-by-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}{{version}}products/d50c65a3-22e6-457e-a0f9-cd4930d6efec",
+					"host": [
+						"{{url}}{{version}}products"
+					],
+					"path": [
+						"d50c65a3-22e6-457e-a0f9-cd4930d6efec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}{{version}}categories/page/0/size/10",
+					"host": [
+						"{{url}}{{version}}categories"
+					],
+					"path": [
+						"page",
+						"0",
+						"size",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-sellers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}{{version}}sellers/page/0/size/10",
+					"host": [
+						"{{url}}{{version}}sellers"
+					],
+					"path": [
+						"page",
+						"0",
+						"size",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": \"d50c65a3-22e6-457e-a0f9-cd4930d6efec\",\r\n            \"name\": \"Smartphone\",\r\n            \"description\": \"High-end smartphone\",\r\n            \"price\": 799.99,\r\n            \"upc\": null,\r\n            \"lastModifiedDate\": \"2023-10-27T19:39:26+0000\",\r\n            \"category\": {\r\n                \"id\": \"c94e7a1e-2a6a-4e00-9b33-5a96ea8f250a\",\r\n                \"name\": \"Electronics\",\r\n                \"description\": \"Electronic products category\"\r\n            },\r\n            \"sellers\": [\r\n                {\r\n                    \"id\": \"a8e22ad4-6677-4b03-82c4-2a8e6930bfff\",\r\n                    \"name\": \"TechWorld\"\r\n                },\r\n                {\r\n                    \"id\": \"a8e22ad4-6677-4b03-82c4-2a8e6930bfff\",\r\n                    \"name\": \"ElectroShop\"\r\n                }\r\n            ],\r\n            \"createdDate\": \"2023-10-27T19:39:26+0000\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}{{version}}products/",
+					"host": [
+						"{{url}}{{version}}products"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
