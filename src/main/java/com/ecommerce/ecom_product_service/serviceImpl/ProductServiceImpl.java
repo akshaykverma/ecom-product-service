@@ -27,6 +27,7 @@ public class ProductServiceImpl implements ProductService {
 
 	private final ProductRepostory productRepo;
 	private final ProductMapper productMapper;
+	private final KafkaProducerService kafkaProducerService;
 
 	@Override
 	public ProductDTO getProductById(UUID productId) {
@@ -73,7 +74,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO saveProduct(ProductDTO productDto) {
 		Product savedProduct = productRepo.save(productMapper.convertToProduct(productDto));
-		return productMapper.convertToProductDto(savedProduct);
+		
+		ProductDTO savedProductDto = productMapper.convertToProductDto(savedProduct);
+		kafkaProducerService.sendMessage(savedProductDto);
+		
+		return savedProductDto;
 	}
 
 	@Override
