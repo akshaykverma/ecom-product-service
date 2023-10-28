@@ -28,6 +28,8 @@ public class ProductDTO {
 	
 	@NotBlank
 	private Double price;
+	
+	@NotBlank
 	private String upc; 
 	
 	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)

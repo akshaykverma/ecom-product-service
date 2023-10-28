@@ -1,5 +1,6 @@
 package com.ecommerce.ecom_product_service.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -32,6 +33,16 @@ public class GlobalExceptionHandler {
 		
 		ErrorMessage error = ErrorMessage.builder().errorMessage(e.getMessage()).build();
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEntity<ErrorMessage> dataIntegrityViolation(DataIntegrityViolationException e){
+		
+		log.debug("DataIntegrity Violation Exception occured : " + e.getMessage());
+		
+		ErrorMessage error = ErrorMessage.builder().errorMessage(e.getMessage()).build();
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 	
 }

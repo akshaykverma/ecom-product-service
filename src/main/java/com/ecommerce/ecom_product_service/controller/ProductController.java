@@ -6,6 +6,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,10 +55,12 @@ public class ProductController {
     public ResponseEntity<Void>  addProduct(@RequestBody ProductDTO productDto) {
 		log.debug("Add Request for a Product ");
 
-		productService.saveProduct(productDto);
+		ProductDTO saveProduct = productService.saveProduct(productDto);
 		
-		return ResponseEntity.
-				noContent().
-				build();
+		HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.add("Location", "/api/v1/beer_service/" + saveProduct.getId().toString());
+		
+		return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
 	}
 }

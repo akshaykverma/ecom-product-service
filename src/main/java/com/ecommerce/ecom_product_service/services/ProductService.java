@@ -17,7 +17,7 @@ public interface ProductService {
 	
 	ProductSearchResultDTO listProducts(Integer pageNumber, Integer size);
 	
-	void saveProduct(ProductDTO productDto);
+	ProductDTO saveProduct(ProductDTO productDto);
 	
 	void updateProduct(UUID currentProductId, ProductDTO updatedProductData);
 	

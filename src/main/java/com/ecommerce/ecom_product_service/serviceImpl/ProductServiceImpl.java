@@ -71,8 +71,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void saveProduct(ProductDTO productDto) {
-		
+	public ProductDTO saveProduct(ProductDTO productDto) {
+		Product savedProduct = productRepo.save(productMapper.convertToProduct(productDto));
+		return productMapper.convertToProductDto(savedProduct);
 	}
 
 	@Override
